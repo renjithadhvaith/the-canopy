@@ -18,8 +18,7 @@
     --font-mono:'IBM Plex Mono', ui-monospace, Menlo, monospace;
   }
   *,*::before,*::after{ box-sizing:border-box; }
-  html,body{ margin:0; padding:0; min-height:100%; background:var(--soil-900); color:var(--parchment);
-    font-family:var(--font-body); -webkit-tap-highlight-color:transparent; }
+  html,body{ margin:0; padding:0; min-height:100%; background:var(--soil-900); color:var(--parchment); font-family:var(--font-body); -webkit-tap-highlight-color:transparent; }
   body{ background:radial-gradient(120% 90% at 50% -10%, #2a2013 0%, var(--soil-900) 42%, var(--dusk-800) 86%, var(--dusk-900) 100%); min-height:100vh; overflow-x:hidden; }
   button{ font-family:inherit; cursor:pointer; border:none; background:none; color:inherit; }
   a{ color:inherit; text-decoration:none; }
@@ -33,7 +32,7 @@
   header.top .leaf{ width:40px; height:40px; flex:none; margin-top:3px; }
   header.top h1{ font-family:var(--font-display); font-weight:600; font-size:30px; line-height:1.05; margin:0; letter-spacing:.2px; }
   header.top h1 .sub-em{ font-style:italic; font-weight:400; color:var(--moss); }
-  header.top p{ margin:7px 0 0; font-size:14.5px; color:var(--parchment-dim); max-width:62ch; line-height:1.5; }
+  header.top p{ margin:7px 0 0; font-size:14.5px; color:var(--parchment-dim); max-width:64ch; line-height:1.5; }
 
   .bench{ background:linear-gradient(180deg,var(--panel-2),var(--panel)); border:1px solid var(--border); border-radius:16px; padding:16px; margin-bottom:18px; box-shadow:0 14px 34px -22px #000; }
   .bench .row{ display:flex; gap:10px; flex-wrap:wrap; }
@@ -94,23 +93,25 @@
   .scrim{ position:fixed; inset:0; background:#080502cc; backdrop-filter:blur(3px); display:none; align-items:center; justify-content:center; padding:20px; z-index:50; }
   .scrim.open{ display:flex; animation:fade .16s ease; }
   @keyframes fade{ from{opacity:0} to{opacity:1} }
-  .sheet{ width:100%; max-width:460px; max-height:88vh; overflow-y:auto; background:linear-gradient(180deg,#241a10,#1a130a); border:1px solid var(--border); border-radius:18px; padding:22px; box-shadow:0 30px 70px -30px #000; animation:rise .2s cubic-bezier(.2,.8,.2,1); }
+  .sheet{ width:100%; max-width:470px; max-height:88vh; overflow-y:auto; background:linear-gradient(180deg,#241a10,#1a130a); border:1px solid var(--border); border-radius:18px; padding:22px; box-shadow:0 30px 70px -30px #000; animation:rise .2s cubic-bezier(.2,.8,.2,1); }
   @keyframes rise{ from{opacity:0; transform:translateY(14px) scale(.98)} to{opacity:1; transform:none} }
   .sheet .head{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:4px; }
   .sheet .eyebrow{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent,var(--moss)); }
   .sheet h3{ font-family:var(--font-display); font-weight:600; font-size:21px; margin:3px 0 0; line-height:1.1; }
   .sheet .x{ width:30px; height:30px; border-radius:9px; border:1px solid var(--border-soft); color:var(--parchment-dim); font-size:17px; line-height:1; display:flex; align-items:center; justify-content:center; flex:none; transition:all .14s; }
   .sheet .x:hover{ border-color:var(--clay); color:var(--clay); }
-  .sheet .say{ font-size:12.5px; color:var(--parchment-faint); margin:11px 0 16px; }
-  .dests{ display:flex; flex-direction:column; gap:9px; }
-  .dest{ display:flex; align-items:center; gap:13px; background:#15100a; border:1px solid var(--border-soft); border-radius:12px; padding:12px 15px; transition:transform .1s, border-color .15s, background .15s; }
+  .sheet .say{ font-size:12.5px; color:var(--parchment-faint); margin:11px 0 14px; }
+  .dests{ display:flex; flex-direction:column; gap:8px; }
+  .dest{ display:flex; align-items:center; gap:13px; background:#15100a; border:1px solid var(--border-soft); border-radius:12px; padding:11px 15px; transition:transform .1s, border-color .15s, background .15s; }
   .dest:hover{ transform:translateX(3px); border-color:var(--d,var(--moss-deep)); background:#1b140c; }
   .dest .ic{ width:32px; height:32px; border-radius:9px; display:flex; align-items:center; justify-content:center; flex:none; border:1px solid var(--d,var(--border)); }
   .dest .ic svg{ width:16px; height:16px; color:var(--d,var(--parchment)); }
   .dest .t .a{ font-weight:700; font-size:13.5px; }
   .dest .t .b{ font-size:11px; color:var(--parchment-faint); margin-top:1px; font-family:var(--font-mono); }
   .dest .arr{ margin-left:auto; color:var(--parchment-faint); font-size:15px; }
-  .dgroup{ margin-top:15px; font-size:10.5px; font-family:var(--font-mono); letter-spacing:.12em; text-transform:uppercase; color:var(--parchment-faint); margin-bottom:8px; }
+  .dgroup{ margin-top:16px; font-size:10.5px; font-family:var(--font-mono); letter-spacing:.12em; text-transform:uppercase; color:var(--accent,var(--parchment-faint)); margin-bottom:8px; display:flex; align-items:center; gap:8px; opacity:.9; }
+  .dgroup::after{ content:""; flex:1; height:1px; background:var(--border-soft); }
+  .dests > .dgroup:first-child{ margin-top:2px; }
 
   @media (max-width:560px){
     .wrap{ padding:22px 15px 80px; }
@@ -131,7 +132,7 @@
     </svg>
     <div>
       <h1>The Canopy <span class="sub-em">— discovery bench</span></h1>
-      <p>Pick a topic from your folder and it opens the <em>right</em> expert source for it — Stack Exchange for usage questions, Ngram for word history, Grammar Monster and Grammar Bytes for reference, LingBuzz and Scholar for theory, Reddit for the freshest teaching talk. Clean searches, no keyword clutter. Everything opens in a new tab.</p>
+      <p>Pick a topic from your folder and it opens the right expert sources for it, grouped by what you need — ask a question, look it up in a glossary, check real-world usage in a corpus, or dig into commentary and research. Clean searches, no keyword clutter. Everything opens in a new tab.</p>
     </div>
   </header>
 
@@ -168,11 +169,11 @@
 
   <div class="community">
     <h2>Browse the communities</h2>
-    <p>Skip the search and drop straight into the places ALTs and English teachers actually talk.</p>
+    <p>Skip the search and drop straight into the places ALTs, teachers and linguists gather.</p>
     <div class="links" id="community"></div>
   </div>
 
-  <footer class="foot">The Canopy · part of Renji Resources · clean queries, teaching-scoped, all links open outward</footer>
+  <footer class="foot">The Canopy · part of Renji Resources · clean queries, grouped by purpose, all links open outward</footer>
 </div>
 
 <div class="scrim" id="scrim" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
@@ -193,15 +194,12 @@
 /* ---------------- helpers ---------------- */
 const enc = s => encodeURIComponent(s);
 let TIME = 'year';                         // month | year | all
-const gqdr = () => TIME==='month' ? 'm' : TIME==='year' ? 'y' : '';   // Google tbs
-const gTail = () => { const q=gqdr(); return q ? '&tbs=qdr:'+q : ''; };
+const gqdr = () => TIME==='month' ? 'm' : TIME==='year' ? 'y' : '';
+const gTail = () => { const q=gqdr(); return q ? '&tbs=qdr:'+q : ''; };   // recency ONLY for open-web + reddit
 
-/* light academic context ONLY for Scholar/YouTube (they reward it & tested well);
-   every other source gets the clean term with no appended keywords. */
 const SCHOLAR_CTX = { grammar:'English grammar', sound:'phonology pronunciation', ling:'linguistics',
   method:'language teaching', japan:'English education Japan', vocab:'vocabulary acquisition', lit:'English language arts', general:'English language teaching' };
 
-/* reddit multireddit scoping by scope (path form + restrict_sr = reliable) */
 const SUBS = {
   grammar:['grammar','TEFL','JapanTeaching','ELATeachers'],
   sound:['TEFL','JapanTeaching','linguistics'],
@@ -213,54 +211,114 @@ const SUBS = {
   general:['grammar','TEFL','JapanTeaching','ELATeachers','linguistics']
 };
 
-/* ---------------- destination registry ---------------- */
+/* ---------------- icons ---------------- */
 function ic(inner){ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">'+inner+'</svg>'; }
-const SE = '<path d="M17 15v3H7v-3M8 12.5l8 1M8.5 9l7.6 2.6M10 5.6l6.8 3.9" stroke-linecap="round" stroke-linejoin="round"/>';
-const CHAT = '<path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 9 9 0 0 1-4-.9L3 20l1-4.5A8.4 8.4 0 1 1 21 11.5Z" stroke-linecap="round" stroke-linejoin="round"/>';
-const PLAY = '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.2v5.6l5-2.8z" fill="currentColor" stroke="none"/>';
-const CAP = '<path d="M12 4 2.5 9 12 14l9.5-5L12 4ZM6 11v4c0 1.5 3 3 6 3s6-1.5 6-3v-4" stroke-linecap="round" stroke-linejoin="round"/>';
+const SE    = '<path d="M17 15v3H7v-3M8 12.5l8 1M8.5 9l7.6 2.6M10 5.6l6.8 3.9" stroke-linecap="round" stroke-linejoin="round"/>';
+const CHAT  = '<path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 9 9 0 0 1-4-.9L3 20l1-4.5A8.4 8.4 0 1 1 21 11.5Z" stroke-linecap="round" stroke-linejoin="round"/>';
+const PLAY  = '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.2v5.6l5-2.8z" fill="currentColor" stroke="none"/>';
+const CAP   = '<path d="M12 4 2.5 9 12 14l9.5-5L12 4ZM6 11v4c0 1.5 3 3 6 3s6-1.5 6-3v-4" stroke-linecap="round" stroke-linejoin="round"/>';
 const GLOBE = '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.4 2.5 14.6 0 17M12 3.5c-2.5 2.4-2.5 14.6 0 17"/>';
 const CHART = '<path d="M4 20V4M4 20h16M8 16l3-4 3 2 4-6" stroke-linecap="round" stroke-linejoin="round"/>';
-const BOOK = '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM20 18v3H6.5A2.5 2.5 0 0 1 4 18.5" stroke-linecap="round" stroke-linejoin="round"/>';
+const BOOK  = '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM20 18v3H6.5A2.5 2.5 0 0 1 4 18.5" stroke-linecap="round" stroke-linejoin="round"/>';
 const PAPER = '<path d="M14 3H6v18h12V7zM14 3v4h4M8 12h8M8 16h5" stroke-linecap="round" stroke-linejoin="round"/>';
-const NEWS = '<path d="M4 5h16v14H4zM8 9h8M8 13h8M8 17h5" stroke-linecap="round" stroke-linejoin="round"/>';
+const NEWS  = '<path d="M4 5h16v14H4zM8 9h8M8 13h8M8 17h5" stroke-linecap="round" stroke-linejoin="round"/>';
+const QUOTE = '<path d="M6 7h4v5c0 2.2-1.3 3.4-3.5 4M14 7h4v5c0 2.2-1.3 3.4-3.5 4" stroke-linecap="round" stroke-linejoin="round"/>';
+const DB    = '<ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" stroke-linecap="round"/>';
+const PEN   = '<path d="M4 20l1-4L16 5a2 2 0 0 1 3 3L8 19l-4 1Z" stroke-linejoin="round"/>';
+const WIKI  = '<path d="M3 6h4M17 6h4M4.5 6l3.5 12 4-11 4 11 3.5-12" stroke-linecap="round" stroke-linejoin="round"/>';
 
+/* ---------------- destination registry ----------------
+   Rule: only reddit + open-web (blogs/news) carry the freshness filter.
+   Q&A, glossary, corpus and site: searches are timeless — no date filter. */
 const DEST = {
-  ellSE:   { a:'English learners Q&A', b:'ell.stackexchange.com', color:'#8fb85f', icon:SE,
-             url:(t)=>'https://ell.stackexchange.com/search?q='+enc(t) },
-  engSE:   { a:'Usage Q&A', b:'english.stackexchange.com', color:'#7fae63', icon:SE,
-             url:(t)=>'https://english.stackexchange.com/search?q='+enc(t) },
-  lingSE:  { a:'Linguistics Q&A', b:'linguistics.stackexchange.com', color:'#74a3d9', icon:SE,
-             url:(t)=>'https://linguistics.stackexchange.com/search?q='+enc(t) },
-  gMonster:{ a:'Grammar Monster', b:'grammar-monster.com', color:'#6f9048', icon:BOOK,
-             url:(t)=>'https://www.google.com/search?q='+enc('site:grammar-monster.com '+t) },
-  gBytes:  { a:'Grammar Bytes', b:'chompchomp.com', color:'#93b26a', icon:BOOK,
-             url:(t)=>'https://www.google.com/search?q='+enc('site:chompchomp.com '+t) },
-  ngram:   { a:'Usage over time', b:'Google Ngram', color:'#c67089', icon:CHART,
-             url:(t)=>'https://books.google.com/ngrams/graph?content='+enc(t)+'&year_start=1800&year_end=2022&corpus=en' },
-  reddit:  { a:'Forum talk', b:'newest teaching threads', color:'#e0894f', icon:CHAT,
-             url:(t,subs)=>'https://www.reddit.com/r/'+subs.join('+')+'/search/?q='+enc(t)+'&restrict_sr=1&sort=new&t='+TIME },
-  youtube: { a:'Video lessons', b:'YouTube', color:'#d67243', icon:PLAY,
-             url:(t)=>'https://www.youtube.com/results?search_query='+enc(t+' English lesson') },
-  lingbuzz:{ a:'Linguistics papers', b:'LingBuzz', color:'#b28fd0', icon:PAPER,
-             url:(t)=>'https://www.google.com/search?q='+enc('site:ling.auf.net '+t) },
-  scholar: { a:'Research', b:'Google Scholar', color:'#9c7bc4', icon:CAP,
-             url:(t,subs,scope)=>'https://scholar.google.com/scholar?q='+enc(t+' '+(SCHOLAR_CTX[scope]||'')) },
-  blogs:   { a:'Blogs & guides', b:'the web', color:'#74a3d9', icon:GLOBE,
-             url:(t)=>'https://www.google.com/search?q='+enc(t+' teaching')+gTail() },
-  news:    { a:'Latest news', b:'Google News', color:'#e7ac5f', icon:NEWS,
-             url:(t)=>'https://news.google.com/search?q='+enc(t)+'&hl=en' }
+  ellSE:       { a:'English learners Q&A', b:'ell.stackexchange.com', color:'#8fb85f', icon:SE,
+                 url:t=>'https://ell.stackexchange.com/search?q='+enc(t) },
+  engSE:       { a:'Usage Q&A', b:'english.stackexchange.com', color:'#7fae63', icon:SE,
+                 url:t=>'https://english.stackexchange.com/search?q='+enc(t) },
+  lingSE:      { a:'Linguistics Q&A', b:'linguistics.stackexchange.com', color:'#74a3d9', icon:SE,
+                 url:t=>'https://linguistics.stackexchange.com/search?q='+enc(t) },
+  reddit:      { a:'Forum talk', b:'newest teaching threads', color:'#e0894f', icon:CHAT,
+                 url:(t,subs)=>'https://www.reddit.com/r/'+subs.join('+')+'/search/?q='+enc(t)+'&restrict_sr=1&sort=new&t='+TIME },
+
+  gMonster:    { a:'Grammar Monster', b:'grammar-monster.com', color:'#6f9048', icon:BOOK,
+                 url:t=>'https://www.google.com/search?q='+enc('site:grammar-monster.com '+t) },
+  gBytes:      { a:'Grammar Bytes', b:'chompchomp.com', color:'#93b26a', icon:BOOK,
+                 url:t=>'https://www.google.com/search?q='+enc('site:chompchomp.com '+t) },
+  grammarphobia:{ a:'Grammarphobia', b:'grammarphobia.com', color:'#a9b06a', icon:BOOK,
+                 url:t=>'https://www.google.com/search?q='+enc('site:grammarphobia.com '+t) },
+  glottopedia: { a:'Glottopedia', b:'linguistics wiki', color:'#b28fd0', icon:WIKI,
+                 url:t=>'https://www.glottopedia.org/index.php?title=Special:Search&fulltext=1&search='+enc(t) },
+  silglossary: { a:'SIL Glossary', b:'glossary.sil.org', color:'#9c7bc4', icon:BOOK,
+                 url:t=>'https://www.google.com/search?q='+enc('site:glossary.sil.org '+t) },
+
+  netspeak:    { a:'Common phrasings', b:'Netspeak', color:'#5fb0a1', icon:QUOTE,
+                 url:t=>'https://netspeak.org/#q='+enc(t) },
+  ngram:       { a:'Usage over time', b:'Google Ngram', color:'#c67089', icon:CHART,
+                 url:t=>'https://books.google.com/ngrams/graph?content='+enc(t)+'&year_start=1800&year_end=2022&corpus=en' },
+  coca:        { a:'Corpus deep-dive', b:'COCA · opens interface, type your query', color:'#c99a52', icon:DB,
+                 url:()=>'https://www.english-corpora.org/coca/' },
+
+  langlog:     { a:'Language Log', b:'languagelog.ldc.upenn.edu', color:'#8a97c9', icon:PEN,
+                 url:t=>'https://www.google.com/search?q='+enc('site:languagelog.ldc.upenn.edu '+t) },
+  lingbuzz:    { a:'Linguistics papers', b:'LingBuzz', color:'#b28fd0', icon:PAPER,
+                 url:t=>'https://www.google.com/search?q='+enc('site:ling.auf.net '+t) },
+  scholar:     { a:'Research', b:'Google Scholar', color:'#9c7bc4', icon:CAP,
+                 url:(t,subs,scope)=>'https://scholar.google.com/scholar?q='+enc(t+' '+(SCHOLAR_CTX[scope]||'')) },
+  blogs:       { a:'Blogs & guides', b:'the web', color:'#74a3d9', icon:GLOBE,
+                 url:t=>'https://www.google.com/search?q='+enc(t+' teaching')+gTail() },
+
+  youtube:     { a:'Video lessons', b:'YouTube', color:'#d67243', icon:PLAY,
+                 url:t=>'https://www.youtube.com/results?search_query='+enc(t+' English lesson') },
+  news:        { a:'Latest news', b:'Google News', color:'#e7ac5f', icon:NEWS,
+                 url:t=>'https://news.google.com/search?q='+enc(t)+'&hl=en' }
 };
 
-/* which sources fit which branch (order = priority) */
-const BRANCH_DESTS = {
-  grammar:  ['ellSE','engSE','gMonster','gBytes','ngram','reddit','youtube','scholar'],
-  sound:    ['ellSE','engSE','youtube','lingSE','reddit','scholar'],
-  meaning:  ['lingSE','lingbuzz','scholar','engSE','reddit'],
-  method:   ['reddit','blogs','youtube','scholar','news'],
-  vocab:    ['engSE','ngram','ellSE','youtube','reddit','scholar'],
-  rhetoric: ['engSE','blogs','youtube','scholar','reddit'],
-  general:  ['engSE','ellSE','ngram','gMonster','gBytes','reddit','youtube','scholar','blogs']
+/* ---------------- grouped destinations per branch ---------------- */
+const G_ASK='Ask & discuss', G_REF='Reference & glossaries', G_USE='Real-world usage', G_RES='Commentary & research', G_WATCH='Watch', G_NEWS='News';
+const BRANCH_GROUPS = {
+  grammar: [
+    {label:G_ASK, items:['ellSE','engSE','reddit']},
+    {label:G_REF, items:['gMonster','gBytes','grammarphobia']},
+    {label:G_USE, items:['netspeak','ngram','coca']},
+    {label:G_RES, items:['langlog','scholar']},
+    {label:G_WATCH, items:['youtube']}
+  ],
+  sound: [
+    {label:G_ASK, items:['ellSE','engSE','lingSE','reddit']},
+    {label:G_REF, items:['glottopedia','silglossary']},
+    {label:G_RES, items:['scholar']},
+    {label:G_WATCH, items:['youtube']}
+  ],
+  meaning: [
+    {label:G_ASK, items:['lingSE','engSE','reddit']},
+    {label:G_REF, items:['glottopedia','silglossary']},
+    {label:G_RES, items:['langlog','lingbuzz','scholar']}
+  ],
+  method: [
+    {label:G_ASK, items:['reddit']},
+    {label:G_RES, items:['blogs','scholar']},
+    {label:G_WATCH, items:['youtube']},
+    {label:G_NEWS, items:['news']}
+  ],
+  vocab: [
+    {label:G_ASK, items:['engSE','ellSE','reddit']},
+    {label:G_REF, items:['grammarphobia']},
+    {label:G_USE, items:['netspeak','ngram','coca']},
+    {label:G_RES, items:['scholar']},
+    {label:G_WATCH, items:['youtube']}
+  ],
+  rhetoric: [
+    {label:G_ASK, items:['engSE','reddit']},
+    {label:G_RES, items:['blogs','langlog','scholar']},
+    {label:G_WATCH, items:['youtube']}
+  ],
+  general: [
+    {label:G_ASK, items:['engSE','ellSE','lingSE','reddit']},
+    {label:G_REF, items:['gMonster','gBytes','grammarphobia','glottopedia','silglossary']},
+    {label:G_USE, items:['netspeak','ngram','coca']},
+    {label:G_RES, items:['langlog','lingbuzz','blogs','scholar']},
+    {label:G_WATCH, items:['youtube']}
+  ]
 };
 
 /* ---------------- branches ---------------- */
@@ -273,7 +331,7 @@ const BRANCHES = {
   rhetoric:{ label:'Rhetoric & Voice',    color:'#d67243', lede:'Expression, performance and the newer edges of the field.' }
 };
 
-/* ---------------- topics: n=display, t=clean search term, s=scope, b=branch ---------------- */
+/* ---------------- topics ---------------- */
 const TOPICS = [
   {n:'Passive voice', t:'passive voice', s:'grammar', b:'grammar'},
   {n:'Present perfect', t:'present perfect', s:'grammar', b:'grammar'},
@@ -331,15 +389,15 @@ const TOPICS = [
 const COMMUNITIES = [
   {n:"English SE", u:"https://english.stackexchange.com/questions"},
   {n:"ELL SE", u:"https://ell.stackexchange.com/questions"},
+  {n:"Language Log", u:"https://languagelog.ldc.upenn.edu/nll/"},
+  {n:"Glottopedia", u:"https://www.glottopedia.org/"},
   {n:"r/TEFL", u:"https://www.reddit.com/r/TEFL/new/"},
   {n:"r/JapanTeaching", u:"https://www.reddit.com/r/JapanTeaching/new/"},
   {n:"r/linguistics", u:"https://www.reddit.com/r/linguistics/new/"},
-  {n:"LingBuzz", u:"https://ling.auf.net/lingbuzz"},
-  {n:"ALTopedia", u:"https://www.altopedia.net/"},
-  {n:"Google Scholar", u:"https://scholar.google.com/"}
+  {n:"LingBuzz", u:"https://ling.auf.net/lingbuzz"}
 ];
 
-/* ---------------- custom sites (persist if possible, else session) ---------------- */
+/* ---------------- custom sites ---------------- */
 let mySites = [];
 try{ const s=localStorage.getItem('canopy_sites'); if(s) mySites=JSON.parse(s); }catch(e){}
 function saveSites(){ try{ localStorage.setItem('canopy_sites', JSON.stringify(mySites)); }catch(e){} }
@@ -400,20 +458,24 @@ function openTopic(topic){
   lastFocused=document.activeElement;
   const br=BRANCHES[topic.b];
   const color=br?br.color:'#93b26a';
-  document.getElementById('sheet').style.setProperty('--accent',color);
+  const sheetEl=document.getElementById('sheet');
+  sheetEl.style.setProperty('--accent',color);
+  sheetEl.scrollTop=0;
   sheetEyebrow.textContent=br?br.label:'Your search';
   sheetEyebrow.style.color=color;
   sheetTitle.textContent=topic.n;
   sheetSay.textContent='Searching for “'+topic.t+'”. Pick a source — opens in a new tab.';
   const subs=SUBS[topic.s]||SUBS.general;
-  const list=(BRANCH_DESTS[topic.b]||BRANCH_DESTS.general);
-  let html=list.map(k=>{ const d=DEST[k]; return destRow(d, d.url(topic.t, subs, topic.s)); }).join('');
+  const groups=(BRANCH_GROUPS[topic.b]||BRANCH_GROUPS.general);
+  let html='';
+  groups.forEach(g=>{
+    html+='<div class="dgroup" style="--accent:'+color+'">'+g.label+'</div>';
+    html+=g.items.map(k=>{ const d=DEST[k]; return destRow(d, d.url(topic.t, subs, topic.s)); }).join('');
+  });
   if(mySites.length){
-    html+='<div class="dgroup">Your sites</div>';
-    html+=mySites.map(dom=>destRow(
-      {a:dom, b:'your site', color:'#c9bea9', icon:GLOBE},
-      'https://www.google.com/search?q='+enc('site:'+dom+' '+topic.t)
-    )).join('');
+    html+='<div class="dgroup" style="--accent:'+color+'">Your sites</div>';
+    html+=mySites.map(dom=>destRow({a:dom, b:'your site', color:'#c9bea9', icon:GLOBE},
+      'https://www.google.com/search?q='+enc('site:'+dom+' '+topic.t))).join('');
   }
   destsEl.innerHTML=html;
   scrim.classList.add('open');
@@ -437,7 +499,6 @@ function addSite(){
 }
 document.getElementById('addSiteBtn').addEventListener('click',addSite);
 document.getElementById('siteInput').addEventListener('keydown',e=>{ if(e.key==='Enter')addSite(); });
-
 function freeLook(){
   const v=document.getElementById('q').value.trim();
   if(!v){ document.getElementById('q').focus(); return; }
