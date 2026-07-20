@@ -233,9 +233,9 @@ const DEST = {
   lingSE:  { a:'Linguistics Q&A', b:'linguistics.stackexchange.com', color:'#74a3d9', icon:SE,
              url:(t)=>'https://linguistics.stackexchange.com/search?q='+enc(t) },
   gMonster:{ a:'Grammar Monster', b:'grammar-monster.com', color:'#6f9048', icon:BOOK,
-             url:(t)=>'https://www.google.com/search?q='+enc('site:grammar-monster.com '+t)+gTail() },
+             url:(t)=>'https://www.google.com/search?q='+enc('site:grammar-monster.com '+t) },
   gBytes:  { a:'Grammar Bytes', b:'chompchomp.com', color:'#93b26a', icon:BOOK,
-             url:(t)=>'https://www.google.com/search?q='+enc('site:chompchomp.com '+t)+gTail() },
+             url:(t)=>'https://www.google.com/search?q='+enc('site:chompchomp.com '+t) },
   ngram:   { a:'Usage over time', b:'Google Ngram', color:'#c67089', icon:CHART,
              url:(t)=>'https://books.google.com/ngrams/graph?content='+enc(t)+'&year_start=1800&year_end=2022&corpus=en' },
   reddit:  { a:'Forum talk', b:'newest teaching threads', color:'#e0894f', icon:CHAT,
@@ -254,11 +254,11 @@ const DEST = {
 
 /* which sources fit which branch (order = priority) */
 const BRANCH_DESTS = {
-  grammar:  ['ellSE','engSE','gMonster','gBytes','ngram','reddit','youtube'],
+  grammar:  ['ellSE','engSE','gMonster','gBytes','ngram','reddit','youtube','scholar'],
   sound:    ['ellSE','engSE','youtube','lingSE','reddit','scholar'],
   meaning:  ['lingSE','lingbuzz','scholar','engSE','reddit'],
   method:   ['reddit','blogs','youtube','scholar','news'],
-  vocab:    ['engSE','ngram','ellSE','youtube','reddit'],
+  vocab:    ['engSE','ngram','ellSE','youtube','reddit','scholar'],
   rhetoric: ['engSE','blogs','youtube','scholar','reddit'],
   general:  ['engSE','ellSE','ngram','gMonster','gBytes','reddit','youtube','scholar','blogs']
 };
@@ -412,7 +412,7 @@ function openTopic(topic){
     html+='<div class="dgroup">Your sites</div>';
     html+=mySites.map(dom=>destRow(
       {a:dom, b:'your site', color:'#c9bea9', icon:GLOBE},
-      'https://www.google.com/search?q='+enc('site:'+dom+' '+topic.t)+gTail()
+      'https://www.google.com/search?q='+enc('site:'+dom+' '+topic.t)
     )).join('');
   }
   destsEl.innerHTML=html;
