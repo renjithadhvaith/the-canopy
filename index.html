@@ -12,7 +12,7 @@
     --soil-900:#181209; --soil-800:#241a10; --dusk-900:#0b1220; --dusk-800:#101a2c;
     --parchment:#f4ecdc; --parchment-dim:#c9bea9; --parchment-faint:#8d8371;
     --panel:#1c140b; --panel-2:#221810; --border:#4a3c28; --border-soft:#3a2f1f;
-    --moss:#93b26a; --moss-deep:#6f9048; --root-blue:#74a3d9; --bud-amber:#e7ac5f; --clay:#d67243; --berry:#c67089;
+    --moss:#93b26a; --moss-deep:#6f9048; --root-blue:#74a3d9; --bud-amber:#e7ac5f; --clay:#d67243; --berry:#c67089; --violet:#9c7bc4;
     --font-display:'Fraunces', Georgia, serif;
     --font-body:'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-mono:'IBM Plex Mono', ui-monospace, Menlo, monospace;
@@ -20,111 +20,104 @@
   *,*::before,*::after{ box-sizing:border-box; }
   html,body{ margin:0; padding:0; min-height:100%; background:var(--soil-900); color:var(--parchment);
     font-family:var(--font-body); -webkit-tap-highlight-color:transparent; }
-  body{ background:
-      radial-gradient(120% 90% at 50% -10%, #2a2013 0%, var(--soil-900) 42%, var(--dusk-800) 86%, var(--dusk-900) 100%);
-    min-height:100vh; overflow-x:hidden; }
+  body{ background:radial-gradient(120% 90% at 50% -10%, #2a2013 0%, var(--soil-900) 42%, var(--dusk-800) 86%, var(--dusk-900) 100%); min-height:100vh; overflow-x:hidden; }
   button{ font-family:inherit; cursor:pointer; border:none; background:none; color:inherit; }
   a{ color:inherit; text-decoration:none; }
   :focus-visible{ outline:2px solid var(--bud-amber); outline-offset:3px; border-radius:8px; }
   ::selection{ background:#e7ac5f44; }
+  input{ font-family:inherit; }
 
   .wrap{ max-width:1000px; margin:0 auto; padding:30px 20px 90px; }
 
-  /* ---- header ---- */
   header.top{ display:flex; align-items:flex-start; gap:15px; margin-bottom:22px; }
   header.top .leaf{ width:40px; height:40px; flex:none; margin-top:3px; }
   header.top h1{ font-family:var(--font-display); font-weight:600; font-size:30px; line-height:1.05; margin:0; letter-spacing:.2px; }
   header.top h1 .sub-em{ font-style:italic; font-weight:400; color:var(--moss); }
-  header.top p{ margin:7px 0 0; font-size:14.5px; color:var(--parchment-dim); max-width:60ch; line-height:1.5; }
+  header.top p{ margin:7px 0 0; font-size:14.5px; color:var(--parchment-dim); max-width:62ch; line-height:1.5; }
 
-  /* ---- search bar ---- */
-  .bench{ background:linear-gradient(180deg,var(--panel-2),var(--panel)); border:1px solid var(--border);
-    border-radius:16px; padding:16px; margin-bottom:20px; box-shadow:0 14px 34px -22px #000; }
+  .bench{ background:linear-gradient(180deg,var(--panel-2),var(--panel)); border:1px solid var(--border); border-radius:16px; padding:16px; margin-bottom:18px; box-shadow:0 14px 34px -22px #000; }
   .bench .row{ display:flex; gap:10px; flex-wrap:wrap; }
-  .bench .field{ flex:1 1 260px; display:flex; align-items:center; gap:10px; background:#120c06;
-    border:1px solid var(--border-soft); border-radius:11px; padding:11px 13px; }
+  .bench .field{ flex:1 1 260px; display:flex; align-items:center; gap:10px; background:#120c06; border:1px solid var(--border-soft); border-radius:11px; padding:11px 13px; }
   .bench .field svg{ width:17px; height:17px; flex:none; color:var(--parchment-faint); }
-  .bench input{ flex:1; background:none; border:none; outline:none; color:var(--parchment);
-    font-family:var(--font-body); font-size:15px; }
+  .bench input.main{ flex:1; background:none; border:none; outline:none; color:var(--parchment); font-size:15px; }
   .bench input::placeholder{ color:var(--parchment-faint); }
-  .go{ background:var(--moss-deep); color:#10160a; font-weight:700; font-size:14px; padding:0 18px;
-    border-radius:11px; letter-spacing:.2px; transition:background .15s, transform .1s; }
+  .go{ background:var(--moss-deep); color:#10160a; font-weight:700; font-size:14px; padding:0 18px; border-radius:11px; transition:background .15s, transform .1s; }
   .go:hover{ background:var(--moss); } .go:active{ transform:translateY(1px); }
-  .surprise{ background:#241a10; border:1px solid var(--border); color:var(--bud-amber); font-weight:600;
-    font-size:13.5px; padding:0 15px; border-radius:11px; display:flex; align-items:center; gap:7px; transition:border-color .15s, color .15s; }
+  .surprise{ background:#241a10; border:1px solid var(--border); color:var(--bud-amber); font-weight:600; font-size:13.5px; padding:0 15px; border-radius:11px; display:flex; align-items:center; gap:7px; transition:border-color .15s; }
   .surprise:hover{ border-color:var(--bud-amber); }
-  .bench .hint{ margin:11px 2px 0; font-size:11.5px; color:var(--parchment-faint); font-family:var(--font-mono); }
 
-  /* ---- filter chips ---- */
-  .filters{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
-  .filters button{ font-size:13px; font-weight:600; color:var(--parchment-dim); padding:7px 14px;
-    border:1px solid var(--border-soft); border-radius:999px; background:#1a130a; transition:all .14s; }
+  .controls{ display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-top:13px; padding-top:13px; border-top:1px solid var(--border-soft); }
+  .ctl-label{ font-size:11.5px; font-family:var(--font-mono); color:var(--parchment-faint); letter-spacing:.05em; }
+  .seg{ display:inline-flex; background:#120c06; border:1px solid var(--border-soft); border-radius:9px; padding:3px; gap:2px; }
+  .seg button{ font-size:12.5px; font-weight:600; color:var(--parchment-dim); padding:5px 12px; border-radius:7px; transition:all .13s; }
+  .seg button[aria-pressed="true"]{ background:var(--bud-amber); color:var(--soil-900); }
+  .addsite{ display:flex; align-items:center; gap:8px; flex:1 1 240px; }
+  .addsite input{ flex:1; min-width:120px; background:#120c06; border:1px solid var(--border-soft); border-radius:9px; padding:8px 11px; color:var(--parchment); font-size:13px; outline:none; }
+  .addsite button{ background:#241a10; border:1px solid var(--border); color:var(--moss); font-weight:700; font-size:13px; padding:8px 13px; border-radius:9px; transition:border-color .14s; }
+  .addsite button:hover{ border-color:var(--moss-deep); }
+  .mysites{ display:flex; gap:7px; flex-wrap:wrap; margin-top:11px; }
+  .mysites:empty{ display:none; }
+  .mysites .chip{ display:flex; align-items:center; gap:7px; font-size:12px; font-family:var(--font-mono); color:var(--parchment-dim); background:#1a130a; border:1px solid var(--border-soft); border-radius:999px; padding:5px 6px 5px 12px; }
+  .mysites .chip button{ width:18px; height:18px; border-radius:50%; background:#2a2013; color:var(--parchment-faint); font-size:11px; line-height:1; display:flex; align-items:center; justify-content:center; transition:all .13s; }
+  .mysites .chip button:hover{ background:var(--clay); color:#fff; }
+
+  .filters{ display:flex; gap:8px; flex-wrap:wrap; margin:18px 0 24px; }
+  .filters button{ font-size:13px; font-weight:600; color:var(--parchment-dim); padding:7px 14px; border:1px solid var(--border-soft); border-radius:999px; background:#1a130a; transition:all .14s; }
   .filters button:hover{ border-color:var(--border); color:var(--parchment); }
   .filters button[aria-pressed="true"]{ background:var(--parchment); color:var(--soil-900); border-color:var(--parchment); }
 
-  /* ---- branch sections ---- */
   .branch{ margin-bottom:30px; }
   .branch.hidden{ display:none; }
-  .branch h2{ font-family:var(--font-display); font-weight:600; font-size:16px; margin:0 0 4px;
-    display:flex; align-items:baseline; gap:10px; }
+  .branch h2{ font-family:var(--font-display); font-weight:600; font-size:16px; margin:0 0 4px; display:flex; align-items:baseline; gap:10px; }
   .branch h2 .dot{ width:9px; height:9px; border-radius:50%; display:inline-block; flex:none; }
   .branch h2 .cnt{ font-family:var(--font-mono); font-size:11px; color:var(--parchment-faint); font-weight:400; }
   .branch .lede{ margin:0 0 13px 19px; font-size:12.5px; color:var(--parchment-faint); }
 
   .leaves{ display:grid; grid-template-columns:repeat(auto-fill, minmax(158px,1fr)); gap:10px; }
-  .leaf-chip{ text-align:left; background:linear-gradient(180deg,#20180e,#1a130a); border:1px solid var(--border-soft);
-    border-radius:12px; padding:13px 14px; display:flex; flex-direction:column; gap:6px; min-height:64px;
-    transition:transform .12s, border-color .15s, box-shadow .15s; position:relative; overflow:hidden; }
+  .leaf-chip{ text-align:left; background:linear-gradient(180deg,#20180e,#1a130a); border:1px solid var(--border-soft); border-radius:12px; padding:13px 14px; display:flex; flex-direction:column; gap:6px; min-height:64px; transition:transform .12s, border-color .15s, box-shadow .15s; position:relative; overflow:hidden; }
   .leaf-chip::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--accent,var(--moss)); opacity:.7; }
   .leaf-chip:hover{ transform:translateY(-2px); border-color:var(--border); box-shadow:0 12px 26px -18px #000; }
   .leaf-chip .nm{ font-weight:700; font-size:14px; line-height:1.25; }
   .leaf-chip .look{ font-size:11px; color:var(--parchment-faint); font-family:var(--font-mono); display:flex; align-items:center; gap:5px; }
   .leaf-chip .look svg{ width:12px; height:12px; }
 
-  /* ---- community footer ---- */
   .community{ margin-top:12px; border-top:1px solid var(--border-soft); padding-top:22px; }
   .community h2{ font-family:var(--font-display); font-weight:600; font-size:15px; margin:0 0 4px; }
   .community p{ margin:0 0 13px; font-size:12.5px; color:var(--parchment-faint); }
   .community .links{ display:flex; gap:8px; flex-wrap:wrap; }
-  .community a{ font-size:12.5px; font-weight:600; color:var(--parchment-dim); padding:8px 13px;
-    border:1px solid var(--border-soft); border-radius:10px; background:#1a130a; display:flex; align-items:center; gap:7px; transition:all .14s; }
+  .community a{ font-size:12.5px; font-weight:600; color:var(--parchment-dim); padding:8px 13px; border:1px solid var(--border-soft); border-radius:10px; background:#1a130a; display:flex; align-items:center; gap:7px; transition:all .14s; }
   .community a:hover{ border-color:var(--moss-deep); color:var(--parchment); }
   .community a .g{ width:6px; height:6px; border-radius:50%; background:var(--moss); flex:none; }
 
   footer.foot{ margin-top:40px; text-align:center; font-size:11px; color:var(--parchment-faint); font-family:var(--font-mono); }
 
-  /* ---- overlay ---- */
-  .scrim{ position:fixed; inset:0; background:#080502cc; backdrop-filter:blur(3px); display:none;
-    align-items:center; justify-content:center; padding:20px; z-index:50; }
+  .scrim{ position:fixed; inset:0; background:#080502cc; backdrop-filter:blur(3px); display:none; align-items:center; justify-content:center; padding:20px; z-index:50; }
   .scrim.open{ display:flex; animation:fade .16s ease; }
   @keyframes fade{ from{opacity:0} to{opacity:1} }
-  .sheet{ width:100%; max-width:440px; background:linear-gradient(180deg,#241a10,#1a130a); border:1px solid var(--border);
-    border-radius:18px; padding:22px; box-shadow:0 30px 70px -30px #000; animation:rise .2s cubic-bezier(.2,.8,.2,1); }
+  .sheet{ width:100%; max-width:460px; max-height:88vh; overflow-y:auto; background:linear-gradient(180deg,#241a10,#1a130a); border:1px solid var(--border); border-radius:18px; padding:22px; box-shadow:0 30px 70px -30px #000; animation:rise .2s cubic-bezier(.2,.8,.2,1); }
   @keyframes rise{ from{opacity:0; transform:translateY(14px) scale(.98)} to{opacity:1; transform:none} }
   .sheet .head{ display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:4px; }
   .sheet .eyebrow{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent,var(--moss)); }
   .sheet h3{ font-family:var(--font-display); font-weight:600; font-size:21px; margin:3px 0 0; line-height:1.1; }
-  .sheet .x{ width:30px; height:30px; border-radius:9px; border:1px solid var(--border-soft); color:var(--parchment-dim);
-    font-size:17px; line-height:1; display:flex; align-items:center; justify-content:center; flex:none; transition:all .14s; }
+  .sheet .x{ width:30px; height:30px; border-radius:9px; border:1px solid var(--border-soft); color:var(--parchment-dim); font-size:17px; line-height:1; display:flex; align-items:center; justify-content:center; flex:none; transition:all .14s; }
   .sheet .x:hover{ border-color:var(--clay); color:var(--clay); }
   .sheet .say{ font-size:12.5px; color:var(--parchment-faint); margin:11px 0 16px; }
   .dests{ display:flex; flex-direction:column; gap:9px; }
-  .dest{ display:flex; align-items:center; gap:13px; background:#15100a; border:1px solid var(--border-soft);
-    border-radius:12px; padding:13px 15px; transition:transform .1s, border-color .15s, background .15s; }
+  .dest{ display:flex; align-items:center; gap:13px; background:#15100a; border:1px solid var(--border-soft); border-radius:12px; padding:12px 15px; transition:transform .1s, border-color .15s, background .15s; }
   .dest:hover{ transform:translateX(3px); border-color:var(--d,var(--moss-deep)); background:#1b140c; }
-  .dest .ic{ width:34px; height:34px; border-radius:9px; display:flex; align-items:center; justify-content:center; flex:none;
-    background:var(--d,#2a2013)22; border:1px solid var(--d,var(--border)); }
-  .dest .ic svg{ width:17px; height:17px; color:var(--d,var(--parchment)); }
-  .dest .t .a{ font-weight:700; font-size:14px; }
-  .dest .t .b{ font-size:11.5px; color:var(--parchment-faint); margin-top:1px; }
-  .dest .arr{ margin-left:auto; color:var(--parchment-faint); font-size:16px; }
+  .dest .ic{ width:32px; height:32px; border-radius:9px; display:flex; align-items:center; justify-content:center; flex:none; border:1px solid var(--d,var(--border)); }
+  .dest .ic svg{ width:16px; height:16px; color:var(--d,var(--parchment)); }
+  .dest .t .a{ font-weight:700; font-size:13.5px; }
+  .dest .t .b{ font-size:11px; color:var(--parchment-faint); margin-top:1px; font-family:var(--font-mono); }
+  .dest .arr{ margin-left:auto; color:var(--parchment-faint); font-size:15px; }
+  .dgroup{ margin-top:15px; font-size:10.5px; font-family:var(--font-mono); letter-spacing:.12em; text-transform:uppercase; color:var(--parchment-faint); margin-bottom:8px; }
 
   @media (max-width:560px){
     .wrap{ padding:22px 15px 80px; }
     header.top h1{ font-size:25px; }
     .leaves{ grid-template-columns:repeat(auto-fill, minmax(140px,1fr)); }
     .scrim{ align-items:flex-end; padding:0; }
-    .sheet{ max-width:none; border-radius:20px 20px 0 0; padding:20px 18px calc(20px + env(safe-area-inset-bottom)); }
+    .sheet{ max-width:none; max-height:90vh; border-radius:20px 20px 0 0; padding:20px 18px calc(20px + env(safe-area-inset-bottom)); }
   }
   @media (prefers-reduced-motion:reduce){ *{ animation:none!important; transition:none!important; } }
 </style>
@@ -134,12 +127,11 @@
 
   <header class="top">
     <svg class="leaf" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      <path d="M20 37c0-9 0-16 0-16M20 21c-7 0-12-4-13-13 9 0 14 4 13 13ZM20 21c7 0 12-4 13-13-9 0-14 4-13 13Z"
-        stroke="#93b26a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M20 37c0-9 0-16 0-16M20 21c-7 0-12-4-13-13 9 0 14 4 13 13ZM20 21c7 0 12-4 13-13-9 0-14 4-13 13Z" stroke="#93b26a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
     <div>
       <h1>The Canopy <span class="sub-em">— discovery bench</span></h1>
-      <p>Your folder is the roots. This looks up and out — pick a topic and see what the wider English-teaching world is saying about it right now: fresh news, forum threads, blog posts, video lessons and research. Every button opens a live search in a new tab.</p>
+      <p>Pick a topic from your folder and it opens the <em>right</em> expert source for it — Stack Exchange for usage questions, Ngram for word history, Grammar Monster and Grammar Bytes for reference, LingBuzz and Scholar for theory, Reddit for the freshest teaching talk. Clean searches, no keyword clutter. Everything opens in a new tab.</p>
     </div>
   </header>
 
@@ -147,7 +139,7 @@
     <div class="row">
       <label class="field">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/></svg>
-        <input id="q" type="text" placeholder="Search any topic — e.g. present perfect, katakana English…" autocomplete="off">
+        <input id="q" class="main" type="text" placeholder="Search any topic — e.g. present perfect, fewer vs less…" autocomplete="off">
       </label>
       <button class="go" id="goBtn">Look up</button>
       <button class="surprise" id="surpriseBtn">
@@ -155,7 +147,19 @@
         Surprise me
       </button>
     </div>
-    <div class="hint">Tip: pick a topic below for smarter, teaching-scoped results — or type your own above.</div>
+    <div class="controls">
+      <span class="ctl-label">Freshness</span>
+      <div class="seg" id="timeSeg">
+        <button data-t="month" aria-pressed="false">Past month</button>
+        <button data-t="year" aria-pressed="true">Past year</button>
+        <button data-t="all" aria-pressed="false">All time</button>
+      </div>
+      <div class="addsite">
+        <input id="siteInput" type="text" placeholder="Add your own site (e.g. wordreference.com)" autocomplete="off">
+        <button id="addSiteBtn">Add</button>
+      </div>
+    </div>
+    <div class="mysites" id="mysites"></div>
   </div>
 
   <div class="filters" id="filters"></div>
@@ -168,10 +172,9 @@
     <div class="links" id="community"></div>
   </div>
 
-  <footer class="foot">The Canopy · part of Renji Resources · no logins, no tracking, all links open outward</footer>
+  <footer class="foot">The Canopy · part of Renji Resources · clean queries, teaching-scoped, all links open outward</footer>
 </div>
 
-<!-- overlay -->
 <div class="scrim" id="scrim" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
   <div class="sheet" id="sheet">
     <div class="head">
@@ -181,34 +184,86 @@
       </div>
       <button class="x" id="closeBtn" aria-label="Close">✕</button>
     </div>
-    <div class="say" id="sheetSay">Where do you want to look?</div>
+    <div class="say" id="sheetSay"></div>
     <div class="dests" id="dests"></div>
   </div>
 </div>
 
 <script>
-/* ---------- source scopes: tune queries + forums per subject area ---------- */
-const SCOPES = {
-  grammar:{ subs:['TEFL','JapanTeaching','ELATeachers'], news:'English grammar teaching', web:'English grammar teaching ESL', yt:'English grammar lesson ESL', sch:'English grammar L2 acquisition pedagogy' },
-  sound:  { subs:['TEFL','JapanTeaching','linguistics'], news:'English pronunciation teaching', web:'English pronunciation teaching ESL', yt:'English pronunciation lesson', sch:'L2 pronunciation phonology teaching' },
-  ling:   { subs:['linguistics','asklinguistics'],       news:'linguistics', web:'linguistics explained', yt:'linguistics explained', sch:'linguistics' },
-  method: { subs:['TEFL','JapanTeaching','ELATeachers'], news:'English language teaching', web:'ELT teaching method classroom', yt:'ESL teaching activity classroom', sch:'English language teaching methodology' },
-  vocab:  { subs:['TEFL','JapanTeaching','ELATeachers'], news:'vocabulary teaching English', web:'vocabulary teaching ESL', yt:'ESL vocabulary activity', sch:'L2 vocabulary acquisition' },
-  japan:  { subs:['JapanTeaching','teachinginjapan','TEFL'], news:'Japan English education ALT', web:'ALT Japan English teaching MEXT', yt:'ALT Japan English lesson', sch:'Japan English education policy MEXT' },
-  lit:    { subs:['ELATeachers','TEFL'],                 news:'teaching English', web:'teaching English classroom', yt:'ESL lesson', sch:'teaching English language arts' }
+/* ---------------- helpers ---------------- */
+const enc = s => encodeURIComponent(s);
+let TIME = 'year';                         // month | year | all
+const gqdr = () => TIME==='month' ? 'm' : TIME==='year' ? 'y' : '';   // Google tbs
+const gTail = () => { const q=gqdr(); return q ? '&tbs=qdr:'+q : ''; };
+
+/* light academic context ONLY for Scholar/YouTube (they reward it & tested well);
+   every other source gets the clean term with no appended keywords. */
+const SCHOLAR_CTX = { grammar:'English grammar', sound:'phonology pronunciation', ling:'linguistics',
+  method:'language teaching', japan:'English education Japan', vocab:'vocabulary acquisition', lit:'English language arts', general:'English language teaching' };
+
+/* reddit multireddit scoping by scope (path form + restrict_sr = reliable) */
+const SUBS = {
+  grammar:['grammar','TEFL','JapanTeaching','ELATeachers'],
+  sound:['TEFL','JapanTeaching','linguistics'],
+  ling:['linguistics','asklinguistics'],
+  method:['TEFL','JapanTeaching','ELATeachers'],
+  japan:['JapanTeaching','teachinginjapan','TEFL'],
+  vocab:['TEFL','JapanTeaching','ELATeachers'],
+  lit:['ELATeachers','TEFL'],
+  general:['grammar','TEFL','JapanTeaching','ELATeachers','linguistics']
 };
-const DEFAULT_SCOPE='method';
 
-function enc(s){ return encodeURIComponent(s); }
-function sc(scope){ return SCOPES[scope]||SCOPES[DEFAULT_SCOPE]; }
-function urlNews(q,scope){ return 'https://news.google.com/search?q='+enc(q+' '+sc(scope).news)+'&hl=en'; }
-function urlForum(q,scope){ const s=sc(scope); const sub='('+s.subs.map(x=>'subreddit:'+x).join(' OR ')+') '+q;
-  return 'https://www.reddit.com/search/?sort=new&q='+enc(sub); }
-function urlWeb(q,scope){ return 'https://www.google.com/search?q='+enc(q+' '+sc(scope).web); }
-function urlVideo(q,scope){ return 'https://www.youtube.com/results?search_query='+enc(q+' '+sc(scope).yt); }
-function urlResearch(q,scope){ return 'https://scholar.google.com/scholar?q='+enc(q+' '+sc(scope).sch); }
+/* ---------------- destination registry ---------------- */
+function ic(inner){ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">'+inner+'</svg>'; }
+const SE = '<path d="M17 15v3H7v-3M8 12.5l8 1M8.5 9l7.6 2.6M10 5.6l6.8 3.9" stroke-linecap="round" stroke-linejoin="round"/>';
+const CHAT = '<path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 9 9 0 0 1-4-.9L3 20l1-4.5A8.4 8.4 0 1 1 21 11.5Z" stroke-linecap="round" stroke-linejoin="round"/>';
+const PLAY = '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.2v5.6l5-2.8z" fill="currentColor" stroke="none"/>';
+const CAP = '<path d="M12 4 2.5 9 12 14l9.5-5L12 4ZM6 11v4c0 1.5 3 3 6 3s6-1.5 6-3v-4" stroke-linecap="round" stroke-linejoin="round"/>';
+const GLOBE = '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.4 2.5 14.6 0 17M12 3.5c-2.5 2.4-2.5 14.6 0 17"/>';
+const CHART = '<path d="M4 20V4M4 20h16M8 16l3-4 3 2 4-6" stroke-linecap="round" stroke-linejoin="round"/>';
+const BOOK = '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM20 18v3H6.5A2.5 2.5 0 0 1 4 18.5" stroke-linecap="round" stroke-linejoin="round"/>';
+const PAPER = '<path d="M14 3H6v18h12V7zM14 3v4h4M8 12h8M8 16h5" stroke-linecap="round" stroke-linejoin="round"/>';
+const NEWS = '<path d="M4 5h16v14H4zM8 9h8M8 13h8M8 17h5" stroke-linecap="round" stroke-linejoin="round"/>';
 
-/* ---------- branches (colour + copy) ---------- */
+const DEST = {
+  ellSE:   { a:'English learners Q&A', b:'ell.stackexchange.com', color:'#8fb85f', icon:SE,
+             url:(t)=>'https://ell.stackexchange.com/search?q='+enc(t) },
+  engSE:   { a:'Usage Q&A', b:'english.stackexchange.com', color:'#7fae63', icon:SE,
+             url:(t)=>'https://english.stackexchange.com/search?q='+enc(t) },
+  lingSE:  { a:'Linguistics Q&A', b:'linguistics.stackexchange.com', color:'#74a3d9', icon:SE,
+             url:(t)=>'https://linguistics.stackexchange.com/search?q='+enc(t) },
+  gMonster:{ a:'Grammar Monster', b:'grammar-monster.com', color:'#6f9048', icon:BOOK,
+             url:(t)=>'https://www.google.com/search?q='+enc('site:grammar-monster.com '+t)+gTail() },
+  gBytes:  { a:'Grammar Bytes', b:'chompchomp.com', color:'#93b26a', icon:BOOK,
+             url:(t)=>'https://www.google.com/search?q='+enc('site:chompchomp.com '+t)+gTail() },
+  ngram:   { a:'Usage over time', b:'Google Ngram', color:'#c67089', icon:CHART,
+             url:(t)=>'https://books.google.com/ngrams/graph?content='+enc(t)+'&year_start=1800&year_end=2022&corpus=en' },
+  reddit:  { a:'Forum talk', b:'newest teaching threads', color:'#e0894f', icon:CHAT,
+             url:(t,subs)=>'https://www.reddit.com/r/'+subs.join('+')+'/search/?q='+enc(t)+'&restrict_sr=1&sort=new&t='+TIME },
+  youtube: { a:'Video lessons', b:'YouTube', color:'#d67243', icon:PLAY,
+             url:(t)=>'https://www.youtube.com/results?search_query='+enc(t+' English lesson') },
+  lingbuzz:{ a:'Linguistics papers', b:'LingBuzz', color:'#b28fd0', icon:PAPER,
+             url:(t)=>'https://www.google.com/search?q='+enc('site:ling.auf.net '+t) },
+  scholar: { a:'Research', b:'Google Scholar', color:'#9c7bc4', icon:CAP,
+             url:(t,subs,scope)=>'https://scholar.google.com/scholar?q='+enc(t+' '+(SCHOLAR_CTX[scope]||'')) },
+  blogs:   { a:'Blogs & guides', b:'the web', color:'#74a3d9', icon:GLOBE,
+             url:(t)=>'https://www.google.com/search?q='+enc(t+' teaching')+gTail() },
+  news:    { a:'Latest news', b:'Google News', color:'#e7ac5f', icon:NEWS,
+             url:(t)=>'https://news.google.com/search?q='+enc(t)+'&hl=en' }
+};
+
+/* which sources fit which branch (order = priority) */
+const BRANCH_DESTS = {
+  grammar:  ['ellSE','engSE','gMonster','gBytes','ngram','reddit','youtube'],
+  sound:    ['ellSE','engSE','youtube','lingSE','reddit','scholar'],
+  meaning:  ['lingSE','lingbuzz','scholar','engSE','reddit'],
+  method:   ['reddit','blogs','youtube','scholar','news'],
+  vocab:    ['engSE','ngram','ellSE','youtube','reddit'],
+  rhetoric: ['engSE','blogs','youtube','scholar','reddit'],
+  general:  ['engSE','ellSE','ngram','gMonster','gBytes','reddit','youtube','scholar','blogs']
+};
+
+/* ---------------- branches ---------------- */
 const BRANCHES = {
   grammar: { label:'Grammar & Structure', color:'#8fb85f', lede:'How the language is built — the strands your JHS and ES units lean on.' },
   sound:   { label:'Sound & Speech',      color:'#74a3d9', lede:'Pronunciation, phonics and prosody — plus where Japanese learners trip.' },
@@ -218,144 +273,116 @@ const BRANCHES = {
   rhetoric:{ label:'Rhetoric & Voice',    color:'#d67243', lede:'Expression, performance and the newer edges of the field.' }
 };
 
-/* ---------- topics (grounded in the English folder index) ---------- */
+/* ---------------- topics: n=display, t=clean search term, s=scope, b=branch ---------------- */
 const TOPICS = [
-  // grammar
-  {n:'Passive voice', s:'grammar', b:'grammar'},
-  {n:'Present perfect', s:'grammar', b:'grammar'},
-  {n:'Conditionals (if-clauses)', s:'grammar', b:'grammar'},
-  {n:'Reduced relative clauses', s:'grammar', b:'grammar'},
-  {n:'Gerunds vs infinitives', s:'grammar', b:'grammar'},
-  {n:'Modal & auxiliary verbs', s:'grammar', b:'grammar'},
-  {n:'Countable & mass nouns', s:'grammar', b:'grammar'},
-  {n:'Articles & determiners', s:'grammar', b:'grammar'},
-  {n:'Prepositions & particles', s:'grammar', b:'grammar'},
-  {n:'Comparatives & superlatives', s:'grammar', b:'grammar'},
-  {n:'Pronouns & reference', s:'grammar', b:'grammar'},
-  {n:'Conjunctions & adverbs', s:'grammar', b:'grammar'},
-  {n:'Reported (indirect) speech', s:'grammar', b:'grammar'},
-  {n:'Question formation', s:'grammar', b:'grammar'},
-  // sound
-  {n:'IPA vowels & vowel height', s:'sound', b:'sound'},
-  {n:'Consonant articulation', s:'sound', b:'sound'},
-  {n:'Aspiration & consonant cases', s:'sound', b:'sound'},
-  {n:'Assimilation & palatalization', s:'sound', b:'sound'},
-  {n:'Phonics & phonological awareness', s:'sound', b:'sound'},
-  {n:'Prosody, stress & intonation', s:'sound', b:'sound'},
-  {n:'Minimal pairs & drills', s:'sound', b:'sound'},
-  {n:'Katakana English & L1 interference', s:'japan', b:'sound'},
-  // meaning
-  {n:'Presupposition & implicature', s:'ling', b:'meaning'},
-  {n:'Fossilization of L2 errors', s:'ling', b:'meaning'},
-  {n:'Semantic sense & perspective', s:'ling', b:'meaning'},
-  {n:'Logical forms', s:'ling', b:'meaning'},
-  {n:'Cognitive & sociolinguistics', s:'ling', b:'meaning'},
-  {n:'Pragmatics & politeness', s:'ling', b:'meaning'},
-  {n:'Discourse markers', s:'grammar', b:'meaning'},
-  // method
-  {n:'MEXT curriculum & rubrics', s:'japan', b:'method'},
-  {n:'CEFR & can-do descriptors', s:'method', b:'method'},
-  {n:'Task-based language teaching', s:'method', b:'method'},
-  {n:'Total Physical Response (TPR)', s:'method', b:'method'},
-  {n:'PPP vs communicative approach', s:'method', b:'method'},
-  {n:'Team teaching (ALT & JTE)', s:'japan', b:'method'},
-  {n:'Error correction & feedback', s:'method', b:'method'},
-  {n:'Gamification in class', s:'method', b:'method'},
-  {n:'Speaking & performance tests', s:'method', b:'method'},
-  {n:'Managing young learners', s:'method', b:'method'},
-  // vocab
-  {n:'Vocabulary retention & recycling', s:'vocab', b:'vocab'},
-  {n:'Spaced repetition', s:'vocab', b:'vocab'},
-  {n:'High-frequency word lists', s:'vocab', b:'vocab'},
-  {n:'Extensive reading', s:'vocab', b:'vocab'},
-  // rhetoric
-  {n:'Literary devices', s:'lit', b:'rhetoric'},
-  {n:'Presentation & speech skills', s:'method', b:'rhetoric'},
-  {n:'AI in language education', s:'method', b:'rhetoric'}
+  {n:'Passive voice', t:'passive voice', s:'grammar', b:'grammar'},
+  {n:'Present perfect', t:'present perfect', s:'grammar', b:'grammar'},
+  {n:'Conditionals (if-clauses)', t:'conditional if clauses', s:'grammar', b:'grammar'},
+  {n:'Reduced relative clauses', t:'reduced relative clause', s:'grammar', b:'grammar'},
+  {n:'Gerunds vs infinitives', t:'gerund infinitive', s:'grammar', b:'grammar'},
+  {n:'Modal & auxiliary verbs', t:'modal auxiliary verbs', s:'grammar', b:'grammar'},
+  {n:'Countable & mass nouns', t:'countable uncountable nouns', s:'grammar', b:'grammar'},
+  {n:'Articles & determiners', t:'articles determiners', s:'grammar', b:'grammar'},
+  {n:'Prepositions & particles', t:'prepositions', s:'grammar', b:'grammar'},
+  {n:'Comparatives & superlatives', t:'comparative superlative', s:'grammar', b:'grammar'},
+  {n:'Pronouns & reference', t:'pronouns reference', s:'grammar', b:'grammar'},
+  {n:'Conjunctions & adverbs', t:'conjunctions adverbs', s:'grammar', b:'grammar'},
+  {n:'Reported (indirect) speech', t:'reported speech', s:'grammar', b:'grammar'},
+  {n:'Question formation', t:'question formation word order', s:'grammar', b:'grammar'},
+
+  {n:'IPA vowels & vowel height', t:'IPA vowels vowel height', s:'sound', b:'sound'},
+  {n:'Consonant articulation', t:'consonant place manner articulation', s:'sound', b:'sound'},
+  {n:'Aspiration & consonant cases', t:'aspiration consonants', s:'sound', b:'sound'},
+  {n:'Assimilation & palatalization', t:'assimilation palatalization', s:'sound', b:'sound'},
+  {n:'Phonics & phonological awareness', t:'phonics phonological awareness', s:'sound', b:'sound'},
+  {n:'Prosody, stress & intonation', t:'stress intonation prosody', s:'sound', b:'sound'},
+  {n:'Minimal pairs & drills', t:'minimal pairs pronunciation', s:'sound', b:'sound'},
+  {n:'Katakana English & L1 interference', t:'katakana English pronunciation', s:'japan', b:'sound'},
+
+  {n:'Presupposition & implicature', t:'presupposition implicature', s:'ling', b:'meaning'},
+  {n:'Fossilization of L2 errors', t:'fossilization second language', s:'ling', b:'meaning'},
+  {n:'Semantic sense & perspective', t:'semantics sense reference', s:'ling', b:'meaning'},
+  {n:'Logical forms', t:'logical form semantics', s:'ling', b:'meaning'},
+  {n:'Cognitive & sociolinguistics', t:'sociolinguistics', s:'ling', b:'meaning'},
+  {n:'Pragmatics & politeness', t:'pragmatics politeness', s:'ling', b:'meaning'},
+  {n:'Discourse markers', t:'discourse markers', s:'grammar', b:'meaning'},
+
+  {n:'MEXT curriculum & rubrics', t:'MEXT English curriculum', s:'japan', b:'method'},
+  {n:'CEFR & can-do descriptors', t:'CEFR can-do descriptors', s:'method', b:'method'},
+  {n:'Task-based language teaching', t:'task-based language teaching', s:'method', b:'method'},
+  {n:'Total Physical Response (TPR)', t:'Total Physical Response TPR', s:'method', b:'method'},
+  {n:'PPP vs communicative approach', t:'PPP communicative language teaching', s:'method', b:'method'},
+  {n:'Team teaching (ALT & JTE)', t:'ALT JTE team teaching', s:'japan', b:'method'},
+  {n:'Error correction & feedback', t:'error correction feedback ESL', s:'method', b:'method'},
+  {n:'Gamification in class', t:'gamification language classroom', s:'method', b:'method'},
+  {n:'Speaking & performance tests', t:'speaking assessment performance test', s:'method', b:'method'},
+  {n:'Managing young learners', t:'classroom management young learners', s:'method', b:'method'},
+
+  {n:'Vocabulary retention & recycling', t:'vocabulary retention', s:'vocab', b:'vocab'},
+  {n:'Spaced repetition', t:'spaced repetition vocabulary', s:'vocab', b:'vocab'},
+  {n:'High-frequency word lists', t:'high frequency word list', s:'vocab', b:'vocab'},
+  {n:'Extensive reading', t:'extensive reading', s:'vocab', b:'vocab'},
+
+  {n:'Literary devices', t:'literary devices', s:'lit', b:'rhetoric'},
+  {n:'Presentation & speech skills', t:'presentation skills speaking', s:'method', b:'rhetoric'},
+  {n:'AI in language education', t:'AI language learning classroom', s:'method', b:'rhetoric'}
 ];
 
-/* ---------- destinations shown in the overlay ---------- */
-const DESTS = [
-  { key:'news',     a:'Latest news',       b:'Recent headlines · Google News',      color:'#e7ac5f', build:urlNews,
-    icon:'<path d="M4 5h16v14H4zM8 9h8M8 13h8M8 17h5" stroke-linecap="round" stroke-linejoin="round"/>' },
-  { key:'forum',    a:'Forum talk',        b:'Freshest threads · Reddit',           color:'#93b26a', build:urlForum,
-    icon:'<path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 9 9 0 0 1-4-.9L3 20l1-4.5A8.4 8.4 0 1 1 21 11.5Z" stroke-linecap="round" stroke-linejoin="round"/>' },
-  { key:'web',      a:'Blogs & articles',  b:'Guides and explainers · the web',     color:'#74a3d9', build:urlWeb,
-    icon:'<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.4 2.5 14.6 0 17M12 3.5c-2.5 2.4-2.5 14.6 0 17" />' },
-  { key:'video',    a:'Video lessons',     b:'Demos and how-tos · YouTube',         color:'#d67243', build:urlVideo,
-    icon:'<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.2v5.6l5-2.8z" fill="currentColor" stroke="none"/>' },
-  { key:'research', a:'Research',          b:'Papers and studies · Scholar',        color:'#9c7bc4', build:urlResearch,
-    icon:'<path d="M12 4 2.5 9 12 14l9.5-5L12 4ZM6 11v4c0 1.5 3 3 6 3s6-1.5 6-3v-4" stroke-linecap="round" stroke-linejoin="round"/>' }
-];
-
-/* ---------- communities (browse directly) ---------- */
 const COMMUNITIES = [
+  {n:"English SE", u:"https://english.stackexchange.com/questions"},
+  {n:"ELL SE", u:"https://ell.stackexchange.com/questions"},
   {n:"r/TEFL", u:"https://www.reddit.com/r/TEFL/new/"},
   {n:"r/JapanTeaching", u:"https://www.reddit.com/r/JapanTeaching/new/"},
-  {n:"r/teachinginjapan", u:"https://www.reddit.com/r/teachinginjapan/new/"},
-  {n:"r/ELATeachers", u:"https://www.reddit.com/r/ELATeachers/new/"},
   {n:"r/linguistics", u:"https://www.reddit.com/r/linguistics/new/"},
-  {n:"Dave's ESL Cafe", u:"https://www.eslcafe.com/"},
+  {n:"LingBuzz", u:"https://ling.auf.net/lingbuzz"},
   {n:"ALTopedia", u:"https://www.altopedia.net/"},
   {n:"Google Scholar", u:"https://scholar.google.com/"}
 ];
 
-/* ---------- render ---------- */
-const sectionsEl = document.getElementById('sections');
-const filtersEl  = document.getElementById('filters');
-const communityEl= document.getElementById('community');
-let activeFilter = 'all';
+/* ---------------- custom sites (persist if possible, else session) ---------------- */
+let mySites = [];
+try{ const s=localStorage.getItem('canopy_sites'); if(s) mySites=JSON.parse(s); }catch(e){}
+function saveSites(){ try{ localStorage.setItem('canopy_sites', JSON.stringify(mySites)); }catch(e){} }
+function cleanDomain(d){ return d.trim().replace(/^https?:\/\//,'').replace(/^www\./,'').replace(/\/.*$/,'').toLowerCase(); }
 
-function svgWrap(inner){ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">'+inner+'</svg>'; }
+/* ---------------- render ---------------- */
+const sectionsEl=document.getElementById('sections');
+const filtersEl=document.getElementById('filters');
+const communityEl=document.getElementById('community');
+const mysitesEl=document.getElementById('mysites');
+let activeFilter='all';
 
 function buildFilters(){
   const all=['all',...Object.keys(BRANCHES)];
-  filtersEl.innerHTML = all.map(k=>{
-    const label = k==='all' ? 'All topics' : BRANCHES[k].label;
-    return `<button data-f="${k}" aria-pressed="${k==='all'}">${label}</button>`;
-  }).join('');
-  filtersEl.querySelectorAll('button').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-      activeFilter = btn.dataset.f;
-      filtersEl.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed', b.dataset.f===activeFilter));
-      applyFilter();
-    });
-  });
+  filtersEl.innerHTML=all.map(k=>`<button data-f="${k}" aria-pressed="${k==='all'}">${k==='all'?'All topics':BRANCHES[k].label}</button>`).join('');
+  filtersEl.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{
+    activeFilter=btn.dataset.f;
+    filtersEl.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.f===activeFilter));
+    document.querySelectorAll('.branch').forEach(sec=>sec.classList.toggle('hidden',!(activeFilter==='all'||sec.dataset.branch===activeFilter)));
+  }));
 }
-
 function buildSections(){
   let html='';
   Object.keys(BRANCHES).forEach(bk=>{
-    const br=BRANCHES[bk];
-    const items=TOPICS.filter(t=>t.b===bk);
-    html += `<section class="branch" data-branch="${bk}">
+    const br=BRANCHES[bk], items=TOPICS.filter(t=>t.b===bk);
+    html+=`<section class="branch" data-branch="${bk}">
       <h2><span class="dot" style="background:${br.color}"></span>${br.label}<span class="cnt">${items.length}</span></h2>
       <p class="lede">${br.lede}</p>
-      <div class="leaves">
-        ${items.map((t,i)=>`<button class="leaf-chip" style="--accent:${br.color}" data-i="${TOPICS.indexOf(t)}">
-            <span class="nm">${t.n}</span>
-            <span class="look">${svgWrap('<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/>')} 5 places to look</span>
-          </button>`).join('')}
-      </div>
+      <div class="leaves">${items.map(t=>`<button class="leaf-chip" style="--accent:${br.color}" data-i="${TOPICS.indexOf(t)}">
+        <span class="nm">${t.n}</span>
+        <span class="look">${ic('<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3" stroke-linecap="round"/>')} choose a source</span></button>`).join('')}</div>
     </section>`;
   });
-  sectionsEl.innerHTML = html;
-  sectionsEl.querySelectorAll('.leaf-chip').forEach(chip=>{
-    chip.addEventListener('click',()=> openTopic(TOPICS[+chip.dataset.i]));
-  });
+  sectionsEl.innerHTML=html;
+  sectionsEl.querySelectorAll('.leaf-chip').forEach(c=>c.addEventListener('click',()=>openTopic(TOPICS[+c.dataset.i])));
+}
+function buildCommunity(){ communityEl.innerHTML=COMMUNITIES.map(c=>`<a href="${c.u}" target="_blank" rel="noopener"><span class="g"></span>${c.n}</a>`).join(''); }
+function renderMySites(){
+  mysitesEl.innerHTML=mySites.map((d,i)=>`<span class="chip">${d}<button data-i="${i}" aria-label="Remove ${d}">✕</button></span>`).join('');
+  mysitesEl.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{ mySites.splice(+b.dataset.i,1); saveSites(); renderMySites(); }));
 }
 
-function applyFilter(){
-  document.querySelectorAll('.branch').forEach(sec=>{
-    sec.classList.toggle('hidden', !(activeFilter==='all' || sec.dataset.branch===activeFilter));
-  });
-}
-
-function buildCommunity(){
-  communityEl.innerHTML = COMMUNITIES.map(c=>`<a href="${c.u}" target="_blank" rel="noopener"><span class="g"></span>${c.n}</a>`).join('');
-}
-
-/* ---------- overlay ---------- */
+/* ---------------- overlay ---------------- */
 const scrim=document.getElementById('scrim');
 const sheetTitle=document.getElementById('sheetTitle');
 const sheetEyebrow=document.getElementById('sheetEyebrow');
@@ -363,49 +390,65 @@ const sheetSay=document.getElementById('sheetSay');
 const destsEl=document.getElementById('dests');
 let lastFocused=null;
 
+function destRow(d, href){
+  return `<a class="dest" style="--d:${d.color}" href="${href}" target="_blank" rel="noopener">
+    <span class="ic">${ic(d.icon)}</span>
+    <span class="t"><span class="a">${d.a}</span><span class="b">${d.b}</span></span>
+    <span class="arr">↗</span></a>`;
+}
 function openTopic(topic){
   lastFocused=document.activeElement;
   const br=BRANCHES[topic.b];
-  document.getElementById('sheet').style.setProperty('--accent', br.color);
-  sheetEyebrow.textContent = br.label;
-  sheetEyebrow.style.color = br.color;
-  sheetTitle.textContent = topic.n;
-  sheetSay.textContent = 'Fresh talk and resources on “'+topic.n+'”. Pick where to look — opens in a new tab.';
-  destsEl.innerHTML = DESTS.map(d=>{
-    const href=d.build(topic.n, topic.s);
-    return `<a class="dest" style="--d:${d.color}" href="${href}" target="_blank" rel="noopener">
-      <span class="ic">${svgWrap(d.icon)}</span>
-      <span class="t"><span class="a">${d.a}</span><span class="b">${d.b}</span></span>
-      <span class="arr">↗</span>
-    </a>`;
-  }).join('');
+  const color=br?br.color:'#93b26a';
+  document.getElementById('sheet').style.setProperty('--accent',color);
+  sheetEyebrow.textContent=br?br.label:'Your search';
+  sheetEyebrow.style.color=color;
+  sheetTitle.textContent=topic.n;
+  sheetSay.textContent='Searching for “'+topic.t+'”. Pick a source — opens in a new tab.';
+  const subs=SUBS[topic.s]||SUBS.general;
+  const list=(BRANCH_DESTS[topic.b]||BRANCH_DESTS.general);
+  let html=list.map(k=>{ const d=DEST[k]; return destRow(d, d.url(topic.t, subs, topic.s)); }).join('');
+  if(mySites.length){
+    html+='<div class="dgroup">Your sites</div>';
+    html+=mySites.map(dom=>destRow(
+      {a:dom, b:'your site', color:'#c9bea9', icon:GLOBE},
+      'https://www.google.com/search?q='+enc('site:'+dom+' '+topic.t)+gTail()
+    )).join('');
+  }
+  destsEl.innerHTML=html;
   scrim.classList.add('open');
   document.getElementById('closeBtn').focus();
   document.body.style.overflow='hidden';
 }
-function closeTopic(){
-  scrim.classList.remove('open');
-  document.body.style.overflow='';
-  if(lastFocused) lastFocused.focus();
-}
-document.getElementById('closeBtn').addEventListener('click', closeTopic);
-scrim.addEventListener('click', e=>{ if(e.target===scrim) closeTopic(); });
-document.addEventListener('keydown', e=>{ if(e.key==='Escape' && scrim.classList.contains('open')) closeTopic(); });
+function closeTopic(){ scrim.classList.remove('open'); document.body.style.overflow=''; if(lastFocused)lastFocused.focus(); }
+document.getElementById('closeBtn').addEventListener('click',closeTopic);
+scrim.addEventListener('click',e=>{ if(e.target===scrim)closeTopic(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&scrim.classList.contains('open'))closeTopic(); });
 
-/* ---------- free-text search + surprise ---------- */
+/* ---------------- controls ---------------- */
+document.getElementById('timeSeg').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+  TIME=b.dataset.t;
+  document.getElementById('timeSeg').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.t===TIME));
+}));
+function addSite(){
+  const inp=document.getElementById('siteInput'); const d=cleanDomain(inp.value);
+  if(d && d.includes('.') && !mySites.includes(d)){ mySites.push(d); saveSites(); renderMySites(); }
+  inp.value=''; inp.focus();
+}
+document.getElementById('addSiteBtn').addEventListener('click',addSite);
+document.getElementById('siteInput').addEventListener('keydown',e=>{ if(e.key==='Enter')addSite(); });
+
 function freeLook(){
   const v=document.getElementById('q').value.trim();
-  if(!v) { document.getElementById('q').focus(); return; }
-  openTopic({n:v, s:DEFAULT_SCOPE, b:'method'});
+  if(!v){ document.getElementById('q').focus(); return; }
+  openTopic({n:v, t:v, s:'general', b:'general'});
 }
-document.getElementById('goBtn').addEventListener('click', freeLook);
-document.getElementById('q').addEventListener('keydown', e=>{ if(e.key==='Enter') freeLook(); });
-document.getElementById('surpriseBtn').addEventListener('click', ()=>{
-  openTopic(TOPICS[Math.floor(Math.random()*TOPICS.length)]);
-});
+document.getElementById('goBtn').addEventListener('click',freeLook);
+document.getElementById('q').addEventListener('keydown',e=>{ if(e.key==='Enter')freeLook(); });
+document.getElementById('surpriseBtn').addEventListener('click',()=>openTopic(TOPICS[Math.floor(Math.random()*TOPICS.length)]));
 
-/* ---------- init ---------- */
-buildFilters(); buildSections(); buildCommunity(); applyFilter();
+/* ---------------- init ---------------- */
+buildFilters(); buildSections(); buildCommunity(); renderMySites();
 </script>
 </body>
 </html>
